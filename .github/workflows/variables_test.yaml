@@ -14,5 +14,5 @@ jobs:
     steps:
       - name: "Say Hello Mona it's Monday"
         run: |
-          echo "$GITHUB_REPOSITORY $. Today is $DAY_OF_WEEK!"
+          echo "$GITHUB_REPOSITORY. Today is $DAY_OF_WEEK!"
           echo "$Greeting ${{ github.repository }}. Today is $DAY_OF_WEEK!"
