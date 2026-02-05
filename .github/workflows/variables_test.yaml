@@ -13,6 +13,6 @@ jobs:
       Greeting: Hello
     steps:
       - name: "Say Hello Mona it's Monday"
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
-        env:
-          First_Name: $GITHUB_REPOSITORY
+        run: |
+          echo "$GITHUB_REPOSITORY $. Today is $DAY_OF_WEEK!"
+          echo "$Greeting ${{ github.repository }}. Today is $DAY_OF_WEEK!"
