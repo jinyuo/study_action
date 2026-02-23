@@ -1,18 +1,33 @@
-name: Greeting on variable day
-
 on:
-  workflow_dispatch
-
-env:
-  DAY_OF_WEEK: Monday
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+      tags:
+        description: 'Test scenario tags'
+        required: false
+        type: boolean
+      environment:
+        description: 'Environment to run tests against'
+        type: environment
+        required: true
 
 jobs:
-  greeting_job:
+  log-the-inputs:
     runs-on: ubuntu-latest
-    env:
-      Greeting: Hello
     steps:
-      - name: "Say Hello Mona it's Monday"
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+      - run: |
+          echo "Log level: $LEVEL"
+          echo "Tags: $TAGS"
+          echo "Environment: $ENVIRONMENT"
         env:
-          First_Name: ${{ github.repository.GITHUB_REPOSITORY }}
+          LEVEL: ${{ inputs.logLevel }}
+          TAGS: ${{ inputs.tags }}
+          ENVIRONMENT: ${{ inputs.environment }}
