@@ -9,6 +9,9 @@ jobs:
     steps:
       - name: summary
         run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+  el:
+    runs-on: ubuntu-latest
+    steps:
       - name: Generate list using Markdown
         run: |
           echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
