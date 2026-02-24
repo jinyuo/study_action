@@ -1,9 +1,11 @@
+name: test_summary
 on:
   workflow_dispatch:
+
   
 jobs:
   somethin:
     runs-on: ubuntu-latest
     steps:
       - name: summary
-        run: echo '### Hello world! :rocket:'' >> $GITHUB_STEP_SUMMARY
+        run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
