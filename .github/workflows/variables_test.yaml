@@ -1,18 +1,18 @@
-name: Greeting on variable day
-
+name: test_summary
 on:
-  workflow_dispatch
+  workflow_dispatch:
 
-env:
-  DAY_OF_WEEK: Monday
-
+  
 jobs:
-  greeting_job:
+  somethin:
     runs-on: ubuntu-latest
-    env:
-      Greeting: Hello
     steps:
-      - name: "Say Hello Mona it's Monday"
+      - name: summary
+        run: echo "### Hello world! :rocket:" >> $GITHUB_STEP_SUMMARY
+      - name: Generate list using Markdown
         run: |
-          echo "$Greeting $GITHUB_REPOSITORY. Today is $DAY_OF_WEEK!"
-          echo "$Greeting ${{ github.repository }}. Today is $DAY_OF_WEEK!"
+          echo "This is the lead in sentence for the list" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY # this is a blank line
+          echo "- Lets add a bullet point" >> $GITHUB_STEP_SUMMARY
+          echo "- Lets add a second bullet point" >> $GITHUB_STEP_SUMMARY
+          echo "- How about a third one?" >> $GITHUB_STEP_SUMMARY
